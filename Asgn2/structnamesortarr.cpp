@@ -1,3 +1,5 @@
+//Taking a list of student's details as input anf showing them in different ways
+
 // #include<iostream>
 // //#include<stdio.h>
 // //#include<stdlib.h>

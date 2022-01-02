@@ -1,39 +1,104 @@
-void insertbefore(node *head)
+//Never Give Up Keep Testing
+// Infix to Postfix Conversion Using stack in c++
+#include<iostream>
+using namespace std;
+
+int top=-1,j=0,i=0,k=0;
+char temp,stck[10],pstfx[10];
+
+void postfix(char []);
+void push(char);
+void pop();
+
+int main()
 {
-    node *temp, *next;
-    int flag = 0, pre;
-    temp = (node *)malloc(sizeof(node));
-    cout << "Enter the element you want to enter before an element of list: ";
-    cin >> temp -> data;
-    cout << "\nEnter the element before which you want to enter the element: ";
-    cin >> pre;
-    next = head;
-    if(next == NULL)
-        cout << "Linked list is empty, cannot enter element before another element.";
-    else
-    {
-        while(next != NULL)
-        {
-            if(next -> data == pre)
-            {
-                flag = 1;
-                break;
-            }
-            else
-            {
-            	next = next -> link;
+	char eq[10];
+	cout<<"Enter the equation : ";
+	cin>>eq;
+	cout<<"\nPostfix expression : ";
+	postfix(eq);
+	cout<<pstfx;
+	cout<<endl;
+
+	return 0;
+}
+
+void push(char c)
+{
+	stck[++top]=c;
+}
+
+void pop()
+{
+	temp=stck[top--];
+}
+
+void postfix(char eq[])
+{
+	while(eq[i]!='\0')
+	{
+		if(eq[i]=='(')
+		{
+			push(eq[i]);
+					
+		}
+		else if(eq[i]==')')
+		{
+			pop();
+			pstfx[j++]=temp;
+			pop();
+		}
+		else if(eq[i]=='+'||eq[i]=='-')
+		{
+			if(stck[top]!='+'&&stck[top]!='-'&&stck[top]!='*'&&stck[top]!='/')
+			{
+				k++;
+				push(eq[i]);
 			}
-                
-        }
-    }
-    if(flag == 1)
-    {
-        temp -> link = next;
-        next = temp;
-        display(head);
-    }
-    else
-    {
-        cout << "\nThe element "<< pre <<" is not present in the array.";
-    }
+			else
+			{	
+				if(k>1)
+				{
+					pop();
+					pstfx[j++]=temp;
+					pstfx[j++]=stck[top];
+					stck[top]=eq[i];
+					k--;
+				}
+				else
+				{
+					pop();
+					pstfx[j++]=temp;
+					k++;
+					push(eq[i]);
+				}
+				
+			}
+		}
+		else if(eq[i]=='*'||eq[i]=='/')
+		{
+			if(stck[top]!='*'&&stck[top]!='/')
+			{
+				push(eq[i]);
+			}
+			else
+			{
+				pop();
+				pstfx[j++]=temp;
+				push(eq[i]);
+			}
+		}
+		else
+		{
+			pstfx[j++]=eq[i];
+		}
+		i++;
+	}
+	while(top>-1)
+	{
+		pop();
+		pstfx[j++]=temp;	
+	}
+	pstfx[j]='\0';
+
 }

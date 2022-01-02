@@ -1,3 +1,4 @@
+// Infix to Postfix Conversion Using stack in c++
 #include<iostream>
 using namespace std;
 
@@ -10,17 +11,14 @@ void pop();
 
 int main()
 {
-	char eq[10];//={'(', 'a', '+', 'b', '+', 'c', ')'};
+	char eq[10];
 	cout<<"Enter the equation : ";
 	cin>>eq;
 	cout<<"\nPostfix expression : ";
 	postfix(eq);
 	cout<<pstfx;
 	cout<<endl;
-//	for(i=0;i<10;i++)
-//	{
-//	cout<<stck[i]<<" ";	
-//	}
+
 	return 0;
 }
 

@@ -1,3 +1,4 @@
+//Program to check whether a equation has correct opening and closing baraces 
 #include<stdio.h>
 int top=-1;
 

@@ -1,78 +1,97 @@
+//Never Give Up Keep Testing
 #include<iostream>
+#include<stdlib.h>
+#include<string>
+
 using namespace std;
-int val;
-struct node
+
+struct stud
 {
-	int data;
-	struct node *link;
+	string name;
+	int roll;
 };
-
-void insert(node *head,node *temp,node *temp1)
-{
-	temp1=head;
-	while(temp1->link!=NULL)
-	{
-		temp1=temp1->link;
-	}
-	temp=new node();
-	temp->data=val;
-	temp->link=NULL;
-	temp1->link=temp;
-}
-
-void display(node *head,node *temp,node *temp1)
-{
-	temp1=head;
-	while(temp1->link!=NULL)
-	{
-		cout<<temp1->data<<" ";
-		temp1=temp1->link;
-	}
-	cout<<temp1->data<<" ";
-}
-
+void sortname(stud);
 int main()
 {
-	node *head=NULL,*temp,*temp1;
-	int i=0,c=1;
-	while(c)
+	int n,i;
+	cout<<"How many studens are there?"<<endl;
+	cin>>n;
+	struct stud s1[n];
+	cout<<"Enter the details\n";
+	
+	for(i=0;i<n;i++)
 	{
-		cout<<"1) to enter 0) to show & exit : ";
-		cin>>c;
-		if(c==1)
-		{
-			if(i!=0)
-			{
-			cout<<"Enter the value : ";
-			cin>>val;
-			insert(head,temp,temp1);	
-			}
-			else
-			{
-			cout<<"Enter the value : ";
-			cin>>val;
-			temp=new node();
-			temp->data=val;
-			temp->link=NULL;
-			head=temp;
-			i++;
-			}
-		}
-		else if(c==0)
-		{
-			break;
-		}
-		else
-		cout<<"Enter a valid input \n";
+		cout<<"Roll no. of student no. "<<i+1<<") : ";
+		//getchar();
+
+		cin>>s1[i].roll;
+		cin.ignore();
+		cout<<"Name of student no. "<<i+1<<") : ";
+		getline(cin, s1[i].name);
 	}
-	display(head,temp,temp1);
-//	temp1=head;
-//	do
-//	{
-//		cout<<temp1->data<<" ";
-//		temp1=temp1->link;
-//	}while(temp1->link!=NULL);
-//	cout<<temp1->data<<" ";
+//do
+//{
+//	cout<<"Name of student no. "<<i+1<<") : ";
+//		gets(s1[i].name);	
+//		i++;
+//}
+//while(i<n);
+	for(i=0;i<n;i++)
+	{
+		sortname(s1[i]);
+	}
+	cout<<"\n:: List of the Sudents :: \n\n";
+	cout<<"--------------------------------\n";
+	cout<<"\tName\t|\tRoll\n";
+	cout<<"--------------------------------\n";
+	
+	for(i=0;i<n;i++)
+	{
+		cout<<i+1<<")\t"<<s1[i].name<<"\t\t"<<s1[i].roll<<endl;
+	}
 	
 	return 0;
+}
+
+void sortname(stud &arr)
+{
+	// for(i=0;i<n;i++)
+	// {
+	// 	sortname(s1[i].name);
+	// }
+	
+	int i;
+ char ascii,ascii1;
+//cout<<arr;
+
+	for(i=0;arr.name[i]!='\0';i++)
+	{
+		//cout<<"+ve"<<endl;
+		ascii=arr.name[i];
+		ascii1=arr.name[i-1];
+		if(i==0)
+		{
+			if(ascii>96 && ascii<123)
+			{
+				ascii-=32;
+				arr.name[i]=ascii;
+			}
+		}
+		else if(ascii1==32)
+		{
+			if(ascii>96 && ascii<123)
+			{
+				ascii-=32;
+				arr.name[i]=ascii;
+			}
+			ascii1=arr.name[i];
+		}
+		else if(ascii>64 && ascii<91)
+		{
+			ascii+=32;
+			arr.name[i]=ascii;
+		}
+		//arr.name[i]='S';
+		//cout<<arr.name[i];
+	}	
 }

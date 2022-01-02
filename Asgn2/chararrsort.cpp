@@ -1,44 +1,29 @@
+//Taking 5 charecters and sorting them alphabetically
 #include<iostream>
 using namespace std;
 
 int main()
 {
-	int i,j,p,brr[5];
+	int i,j;
 	char arr[5],temp;
-	
+	cout<<"Enter Elements\n";
 	for(i=0;i<5;i++)
 	cin>>arr[i];
 	
 	for(i=0;i<4;i++)
 	{
-		temp=arr[i];
-		for(j=i;j<5;j++)
+		for(j=0;j<4;j++)
 		{
-			if(temp<arr[j+1])
+			if(arr[j]>arr[j+1])
 			{
-				temp=arr[j+1];
-				p=j+1;		
+				temp=arr[j];
+				arr[j]=arr[j+1];
+				arr[j+1]=temp;
 			}
-			brr[i]=p;
 		}
 	}
-	
 	for(i=0;i<5;i++)
-	cout<<brr[i]<<" ";
-	//cout<<temp<<endl<<p;
+	cout<<arr[i]<<" ";
 
-//int arr[5]={2,3,0,4,1},i,t;
-//char brr[5]={'c','e','a','b','d'};
-//
-//for(i=0;i<5;i++)
-//{
-//	t=arr[i];
-//	cout<<brr[t]<<endl;
-//}
-	
-	
-
-	
-	
 	return 0;
 }

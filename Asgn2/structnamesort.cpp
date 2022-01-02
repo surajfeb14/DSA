@@ -1,3 +1,4 @@
+//Making the first letter of the name capital and rest of it small lettered using structure
 #include<iostream>
 #include<stdio.h>
 using namespace std;
@@ -14,7 +15,9 @@ int main()
 {
 	char *ptr;
 	stud s1;
+	cout<<"Enter Name : ";
 	gets(s1.name);
+	cout<<"Enter the Roll No. : ";
 	cin>>s1.roll;
 	ptr=&(s1.name[0]);
 	sortname(ptr);

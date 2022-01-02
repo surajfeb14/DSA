@@ -1,3 +1,4 @@
+//Taking a list of student's details as input anf showing them in different ways
 #include<iostream>
 #include<stdlib.h>
 #include<string>
@@ -12,7 +13,7 @@ struct stud{
 };
 
 void display(int ,stud[]);
-
+void heading();
 void srtroll(int ,stud []);
 void srtnm(int ,stud []);
 void srttotal(int ,stud []);
@@ -116,9 +117,7 @@ void srtnm(int n,stud s[])
 			}
 		}
 	}
-	cout<<"==============================\n";
-	cout<<" :: Detail of the Students ::\n";
-	cout<<"==============================\n\n";	
+	heading();
 	cout<<"\n:: Pinting List Namewise ::\n\n";
 	
 	for(i=0;i<n;i++)
@@ -143,9 +142,7 @@ void srtroll(int n,stud s[])
 			}
 		}
 	}
-	cout<<"==============================\n";
-	cout<<" :: Detail of the Students ::\n";
-	cout<<"==============================\n\n";	
+	heading();
 	cout<<"\n:: Pinting List Roll No. wise ::\n\n";
 	for(i=0;i<n;i++)
 	{
@@ -169,9 +166,7 @@ void srttotal(int n,stud s[])
 			}
 		}
 	}
-	cout<<"==============================\n";
-	cout<<" :: Detail of the Students ::\n";
-	cout<<"==============================\n\n";	
+	heading();
 	cout<<":: Pinting List Total Marks wise ::\n\n";
 	for(i=0;i<n;i++)
 	{
@@ -216,9 +211,7 @@ void srtsub(int n,stud s[])
 
 void display(int n,stud s[])
 {
-		cout<<"==============================\n";
-		cout<<" :: Detail of the Students ::\n";
-		cout<<"==============================\n\n";	
+
 	for(int i=0;i<n;i++)
 	{
 		cout<<"Student No. :: "<<i+1<<" :: \n";
@@ -234,4 +227,9 @@ void display(int n,stud s[])
 		cout<<"Average : "<<s[i].avg<<endl;
 		cout<<endl;
 	}
+}
+void heading(){
+		cout<<"==============================\n";
+		cout<<" :: Detail of the Students ::\n";
+		cout<<"==============================\n\n";	
 }

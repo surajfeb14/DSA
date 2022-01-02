@@ -1,3 +1,5 @@
+//Priority Process Scheduling Using c
+
 #include <stdio.h>
 
 typedef struct process
